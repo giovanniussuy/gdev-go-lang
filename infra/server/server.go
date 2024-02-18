@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/giovanniussuy/gdev-go-lang/infra/config"
+	"github.com/giovanniussuy/gdev-go-lang/infra/router"
 )
 
 type (
@@ -41,5 +42,6 @@ func (serverStruct *Server) StartWebServerEngine() *Server {
 	}
 
 	server := router.
-		StartWebEngine
+		StartWebEngine().
+		WithAppName()
 }
