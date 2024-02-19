@@ -13,6 +13,7 @@ import (
 type (
 	Server struct {
 		appConfigurations *config.AppConfigurations
+		serverEngine      router.Server
 	}
 )
 
@@ -43,5 +44,16 @@ func (serverStruct *Server) StartWebServerEngine() *Server {
 
 	server := router.
 		StartWebEngine().
-		WithAppName()
+		WithAppName().
+		WithPort(intParsed).
+		WithDuration(durationParser)
+
+	fmt.Println("INFO: Router server has been successfully configured.")
+
+	serverStruct.serverEngine = server
+	return serverStruct
+}
+
+func (serverStruct *Server) Listen() {
+	serverStruct.serverEngine.Listen()
 }
