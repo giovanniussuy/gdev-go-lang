@@ -85,11 +85,11 @@ func Print() {
 	} else if len(VarLogContent.Warn) > 0 {
 		log.Printf("WARN: %s", json)
 
-	} else if len(VarLogContent.Info) > 0 {
-		log.Printf("INFO: %s", json)
-
 	} else if len(VarLogContent.Debug) > 0 {
 		log.Printf("DEBUG: %s", json)
+
+	} else if len(VarLogContent.Info) > 0 {
+		log.Printf("INFO: %s", json)
 
 	}
 }

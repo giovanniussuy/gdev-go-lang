@@ -10,12 +10,12 @@ import (
 var C *AppConfigurations
 
 type AppConfigurations struct {
-	AppName       string `mapstructure: "app_name"`
-	LoggingLevel  string `mapstructure: "logging_level"`
-	ServerPort    string `mapstructure: "server_port`
-	ServerTimeout string `mapstructure: "server_timeout`
-	ServerMode    string `mapstructure: "server_mode`
-	SomethingHost string `mapstructure: "something_host`
+	AppName       string `mapstructure:"APP_NAME"`
+	LoggingLevel  string `mapstructure:"logging_level"`
+	ServerPort    string `mapstructure:"server_port"`
+	ServerTimeout string `mapstructure:"server_timeout"`
+	ServerMode    string `mapstructure:"server_mode"`
+	SomethingHost string `mapstructure:"something_host"`
 }
 
 func LoadAppConfig() (*AppConfigurations, error) {
