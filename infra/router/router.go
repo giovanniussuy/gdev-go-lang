@@ -17,6 +17,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 	"github.com/gofiber/fiber/v2/middleware/recover"
+
+	fiberSwagger "github.com/swaggo/fiber-swagger"
 )
 
 type (
@@ -95,5 +97,7 @@ func (engine *ServerEngine) Listen() {
 }
 
 func (engine *ServerEngine) WithRoutes(routeEngine *fiber.App) {
+	routeEngine.Get("/swagger/*", fiberSwagger.WrapHandler)
+
 	routeEngine.Post("/v1/nothing", controller.NothingController)
 }
