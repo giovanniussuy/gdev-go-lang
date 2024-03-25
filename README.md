@@ -9,6 +9,16 @@ go run ./...
 
 google.github.io/styleguide/go
 
+# fiber + goccy
+
+
+
+go get github.com/goccy/go-json
+
+-import "encoding/json"
++import "github.com/goccy/go-json"
+
+
 # deploy local
 
 
