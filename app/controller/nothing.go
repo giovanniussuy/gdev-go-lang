@@ -1,6 +1,9 @@
 package controller
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/giovanniussuy/gdev-go-lang/app/audit"
+	"github.com/gofiber/fiber/v2"
+)
 
 // @Summary Get a balance
 // @Description description
@@ -11,8 +14,12 @@ import "github.com/gofiber/fiber/v2"
 // @Param queryParam query int false "naoObrigatorio" Format(int)
 // @Param queryParam query int true "obrigatorio" Format(int)
 // @Success 200 {object} model_api_1.ModelResponse1
-// @Success 400 {object} audit.AuditResponseStatus
-// @Success 500 {object} audit.AuditResponseStatus
+// @Failure 400 {object} audit.AuditResponseStatus
+// @Failure 500 {object} audit.AuditResponseStatus
+// @Router /v1/nothing [get]
 func NothingController(webContext *fiber.Ctx) error {
-	return webContext.Status(200).JSON("nothing")
+
+	response := audit.ConstructAuditResponseStatusByCode(audit.SUCCESS)
+
+	return webContext.Status(response.GetStatus()).JSON(response)
 }

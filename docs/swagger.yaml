@@ -17,5 +17,45 @@ definitions:
     type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /v1/nothing:
+    get:
+      consumes:
+      - application/json
+      description: description
+      parameters:
+      - description: pathParam
+        in: path
+        name: pathParam
+        required: true
+        type: integer
+      - description: naoObrigatorio
+        format: int
+        in: query
+        name: queryParam
+        type: integer
+      - description: obrigatorio
+        format: int
+        in: query
+        name: queryParam
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model_api_1.ModelResponse1'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/audit.AuditResponseStatus'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/audit.AuditResponseStatus'
+      summary: Get a balance
+      tags:
+      - tag
 swagger: "2.0"

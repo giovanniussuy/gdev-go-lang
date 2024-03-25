@@ -47,8 +47,12 @@ var AuditMEssages = map[AuditCode]struct {
 	Message string
 	Status  int
 }{
-	"S0001": {"S0001", "success", http.StatusOK},
+	SUCCESS: {"S0001", "success", http.StatusOK},
 }
+
+const (
+	SUCCESS = "S0001"
+)
 
 func ConstructAuditResponseStatusByCode(code AuditCode) IAuditResponseStatus {
 	audit, find := AuditMEssages[code]

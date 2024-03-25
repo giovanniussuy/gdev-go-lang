@@ -14,7 +14,67 @@ const docTemplate = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {},
+    "paths": {
+        "/v1/nothing": {
+            "get": {
+                "description": "description",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tag"
+                ],
+                "summary": "Get a balance",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "pathParam",
+                        "name": "pathParam",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int",
+                        "description": "naoObrigatorio",
+                        "name": "queryParam",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int",
+                        "description": "obrigatorio",
+                        "name": "queryParam",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model_api_1.ModelResponse1"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/audit.AuditResponseStatus"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/audit.AuditResponseStatus"
+                        }
+                    }
+                }
+            }
+        }
+    },
     "definitions": {
         "audit.AuditResponseStatus": {
             "type": "object",

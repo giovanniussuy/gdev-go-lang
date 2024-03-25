@@ -2,7 +2,6 @@ package router
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -14,6 +13,7 @@ import (
 
 	"github.com/giovanniussuy/gdev-go-lang/app/controller"
 	"github.com/giovanniussuy/gdev-go-lang/infra/config"
+	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 	"github.com/gofiber/fiber/v2/middleware/recover"
@@ -99,5 +99,5 @@ func (engine *ServerEngine) Listen() {
 func (engine *ServerEngine) WithRoutes(routeEngine *fiber.App) {
 	routeEngine.Get("/swagger/*", fiberSwagger.WrapHandler)
 
-	routeEngine.Post("/v1/nothing", controller.NothingController)
+	routeEngine.Get("/v1/nothing", controller.NothingController)
 }
