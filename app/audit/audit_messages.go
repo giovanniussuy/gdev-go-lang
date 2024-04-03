@@ -47,11 +47,13 @@ var AuditMEssages = map[AuditCode]struct {
 	Message string
 	Status  int
 }{
-	SUCCESS: {"S0001", "success", http.StatusOK},
+	Success:      {"S0001", "success", http.StatusOK},
+	ServiceError: {"SE1000", "error", http.StatusInternalServerError},
 }
 
 const (
-	SUCCESS = "S0001"
+	Success      = "S0001"
+	ServiceError = "SE1000"
 )
 
 func ConstructAuditResponseStatusByCode(code AuditCode) IAuditResponseStatus {

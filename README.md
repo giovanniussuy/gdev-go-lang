@@ -10,9 +10,6 @@ go run ./...
 google.github.io/styleguide/go
 
 # fiber + goccy
-
-
-
 go get github.com/goccy/go-json
 
 -import "encoding/json"
@@ -20,7 +17,24 @@ go get github.com/goccy/go-json
 
 
 # deploy local
-
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "./cmd/main.go",
+            "env": {
+                "NOTHING_HOST": "nothig.com.br"
+            }
+        }
+    ]
+}
 
 
 # go swagger 

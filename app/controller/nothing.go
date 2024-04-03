@@ -19,7 +19,7 @@ import (
 // @Router /v1/nothing [get]
 func NothingController(webContext *fiber.Ctx) error {
 
-	response := audit.ConstructAuditResponseStatusByCode(audit.SUCCESS)
+	response := audit.ConstructAuditResponseStatusByCode(audit.Success)
 
 	return webContext.Status(response.GetStatus()).JSON(response)
 }
