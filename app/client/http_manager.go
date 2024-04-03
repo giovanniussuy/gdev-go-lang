@@ -30,10 +30,6 @@ type Response[TResponse any] struct {
 
 type APIError string
 
-const (
-	ServiceError = "SE1000"
-)
-
 func getData(url string, traceId string, mockClient *MockHTTPClient) (*http.Response, error) {
 	if mockClient != nil {
 		return mockClient.Response, mockClient.Error
