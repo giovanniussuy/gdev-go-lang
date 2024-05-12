@@ -37,7 +37,8 @@ func (a *AuditResponseStatus) SetStatus(status int) {
 type AuditResponseStatus struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
-	Status  int    `json:"status"`
+	Status  int    `json:"-"`
+	Error   error  `json:"-"`
 }
 
 type AuditCode string
@@ -47,13 +48,17 @@ var AuditMEssages = map[AuditCode]struct {
 	Message string
 	Status  int
 }{
-	Success:      {"S0001", "success", http.StatusOK},
-	ServiceError: {"SE1000", "error", http.StatusInternalServerError},
+	STATUS_OK: {STATUS_OK, "success", http.StatusOK},
+
+	BAD_REQUEST: {BAD_REQUEST, "error", http.StatusBadRequest},
+
+	INTERNAL_ERROR: {INTERNAL_ERROR, "error", http.StatusInternalServerError},
 }
 
 const (
-	Success      = "S0001"
-	ServiceError = "SE1000"
+	STATUS_OK      = "CS0001"
+	BAD_REQUEST    = "SE1000"
+	INTERNAL_ERROR = "IE1000"
 )
 
 func ConstructAuditResponseStatusByCode(code AuditCode) IAuditResponseStatus {
@@ -61,7 +66,7 @@ func ConstructAuditResponseStatusByCode(code AuditCode) IAuditResponseStatus {
 
 	if !find {
 		return &AuditResponseStatus{
-			Code:    "E0001",
+			Code:    INTERNAL_ERROR,
 			Message: "error.",
 			Status:  http.StatusInternalServerError,
 		}
@@ -80,4 +85,13 @@ func ConstructAuditResponseStatusByCodeWithParams(code AuditCode, extraMessage s
 	auditResponse.SetMessage((fmt.Sprintf("%s: %s.", auditResponse.GetMessage(), extraMessage)))
 
 	return auditResponse
+}
+
+func ConstructAuditResponse(code string, message string, status int, err error) IAuditResponseStatus {
+	return &AuditResponseStatus{
+		Code:    code,
+		Message: message,
+		Status:  status,
+		Error:   err,
+	}
 }
