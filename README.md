@@ -1,11 +1,11 @@
 # gdev-go-lang
 Project with live situations and learnings
 
+abre a pasta main
 
 go mod tidy
-
-go build ./...
-go run ./...
+go build 
+go run main.go
 
 google.github.io/styleguide/go
 
@@ -15,8 +15,12 @@ go get github.com/goccy/go-json
 -import "encoding/json"
 +import "github.com/goccy/go-json"
 
+# fasthttp 
+https://github.com/valyala/fasthttp
 
-# deploy local
+- https://husobee.github.io/golang/fasthttp/2016/06/23/golang-fasthttp.html
+
+# debug local
 {
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
