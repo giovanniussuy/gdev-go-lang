@@ -1,10 +1,11 @@
 module github.com/giovanniussuy/gdev-go-lang
 
-go 1.21.6
+go 1.22.4
 
 require (
 	github.com/goccy/go-json v0.10.2
 	github.com/gofiber/fiber/v2 v2.52.2
+	github.com/magiconair/properties v1.8.7
 	github.com/spf13/viper v1.18.2
 	github.com/swaggo/fiber-swagger v1.3.0
 	github.com/swaggo/swag v1.16.3
@@ -23,7 +24,6 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect
-	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
